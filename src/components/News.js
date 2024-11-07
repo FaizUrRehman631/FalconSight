@@ -32,15 +32,21 @@ export class News extends Component {
     )} - FalconSight`;
   }
   async updateNews() {
-    let myurl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=8453062a6dd740caa41f49f65ed61d70&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.props.setProgress(10);
+    let myurl = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=81237915bb424101b3abc75b12350087&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
     let data = await fetch(myurl);
+    this.props.setProgress(30);
     let parsedData = await data.json();
+    this.props.setProgress(70);
+
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
+
   }
 
   async componentDidMount() {
