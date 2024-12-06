@@ -21,6 +21,17 @@ const App =()=>{
             progress={progress}
           />
           <Routes>
+          <Route
+              path="/"
+              element={
+                <News setProgress={ setProgress} apiKey={ apiKey}
+                  key="FalconSight"
+                  pageSize={ pageSize}
+                  country={ country}
+                  category="FalconSight"
+                />
+              }
+            />
             <Route
               path="/home"
               element={

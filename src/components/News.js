@@ -37,9 +37,9 @@ const News=(props)=> {
     // eslint-disable-next-line 
   },[])
 
-
+  
   const fetchMoreData = async () => {
-    let myurl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}}&page=${page}&pageSize=${props.pageSize}`;
+    let myurl = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
     setPage(page + 1);
     let data = await fetch(myurl);
     let parsedData = await data.json();
@@ -63,9 +63,9 @@ const News=(props)=> {
           <div className="container">
     
             <div className="row my-3 mx-3">
-              {articles?.map((element) => {
+              {articles?.map((element, index) => {
                 return (
-                  <div className="col-md-4" key={element?.date}>
+                  <div className="col-md-4"  key={`${element?.url}-${index}`}>
                     <NewsItem
                       title={ element?.title}
                       description={element?.description}
