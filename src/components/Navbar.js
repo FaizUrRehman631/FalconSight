@@ -1,7 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 
-const Navbar=()=> {
+const Navbar=(props)=> {
+  const [searchQuery, setSearchQuery] = useState(""); // Search query state
+  const handleSearch = (e) => {
+    e.preventDefault();
+    props.handleSearch(searchQuery); // Pass the query to the parent component
+  };
   
     return (
         <nav className="navbar navbar-expand-lg fixed-top bg-body-tertiary">
@@ -22,8 +27,9 @@ const Navbar=()=> {
                  <li className="nav-item"><Link className="nav-link" aria-current="page" to="/sports">Sports</Link></li>
                  <li className="nav-item"><Link className="nav-link" aria-current="page" to="/technology">Technology</Link></li>
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <form className="d-flex" role="search" onSubmit={handleSearch}>
+              <input className="form-control me-2" type="search" placeholder="Search" value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)} aria-label="Search"/>
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>

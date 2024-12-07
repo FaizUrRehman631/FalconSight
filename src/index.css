@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card{
+  height: 230px;
+}
+.nav-link:hover {
+  color: #0d6efd; /* Bootstrap primary color */
+  text-decoration: underline;
+}
